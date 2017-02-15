@@ -1,0 +1,146 @@
+.menu {
+  font-size: 15px;
+  width: 100%;
+
+  &__collection {
+    padding: 20px;
+    display: flex;
+  }
+
+  &__collection-item {
+    margin-right: 10px;
+    padding: 0 10px;
+    border-radius: 2px;
+    border: 1px solid #ed2d32;
+
+    a {
+      color: #ed2d32;
+    }
+
+    &:hover {
+      background-color: #ed2d32;
+
+      a {
+        color: #fff;
+      }
+    }
+    &:not(.menu__collection-item--active) {
+      cursor: pointer;
+    }
+
+    &--active {
+      background-color: #ed2d32;
+
+      a {
+        color: #fff;
+        cursor: default;
+      }
+    }
+  }
+
+  &__search {
+    padding: 0 20px;
+    display: none;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-color: transparent;
+      background-color: transparent;
+      font-family: $main-font;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.search__input {
+  border: none;
+  padding: 0;
+  position: relative;
+  border: 2px solid transparent;
+  overflow: hidden;
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background-image: url('../../img/letter.svg');
+    cursor: pointer;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border: 1px solid;
+    border-radius: 2px;
+    transform: translate3d(0, 100%, 0) translate3d(0, 1px, 0);
+    transition: transform 0.5s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    border-color: #3c0091;
+  }
+
+  &:hover::before {
+    transform: translate3d(0, 0, 0);
+    z-index: -1;
+  }
+}
+
+.search__list {
+  padding-top: 20px;
+}
+
+.search__item {
+  a {
+    color: #3c0091;
+    position: relative;
+    text-shadow: none;
+    white-space: nowrap;
+
+    &::before {
+      color: #3c0091;
+      content: attr(data-hover);
+      position: absolute;
+      transition: transform 0.7s, opacity 0.5s;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      transform: scale(0.1);
+      opacity: 0;
+      color: #3c0091;
+      font-weight: 700;
+    }
+
+    &:hover,
+    &:focus {
+      font-weight: 700;
+      color: #3c0091;
+    }
+  }
+}
+
+@media ($tablet-width) {
+  .menu {
+    position: fixed;
+    min-width: 225px;
+    width: 23%;
+    font-size: 15px;
+
+    &__search {
+      display: block;
+    }
+  }
+}
+
+@media ($desktop-width) {
+  .menu {
+    width: 20%;
+  }
+}

@@ -1,0 +1,19 @@
+.layout-content {
+
+}
+
+@media ($tablet-width) {
+  .layout-content {
+    margin-right: 0;
+    margin-left: auto;
+    margin-top: 150px;
+    width: 75%;
+  }
+}
+
+@media ($desktop-width) {
+  .layout-content {
+    margin-top: 105px;
+    width: 80%;
+  }
+}

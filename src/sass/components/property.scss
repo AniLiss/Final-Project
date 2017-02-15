@@ -1,0 +1,238 @@
+@keyframes opacity {
+  from {
+    color: #ed2d32;
+  }
+  to {
+    color: #3c0091;
+  }
+}
+
+.property {
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 11px -3px rgba(60, 0, 145, 0.61);
+  border-bottom: 1px solid rgba(60, 0, 145, 0.59);
+  padding: 20px;
+  visibility: visible;
+  height: 100%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--short {
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    .property__use-case-list {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      min-height: 0;
+      transition-property: min-height, opacity;
+      transition-duration: .5s;
+    }
+    .button {
+      display: none;
+    }
+    .property__description {
+      display: none;
+    }
+    .property__name {
+      margin: 0;
+    }
+  }
+}
+
+.property__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .button--purple {
+    align-self: center;
+    // flex-basis: 40%;
+    max-width: 150px;
+  }
+}
+
+.property__name {
+  margin-right: 20px;
+
+  a {
+    color: #ed2d32;
+
+    &:hover {
+      text-decoration: underline;
+      animation-name: opacity;
+      animation-duration: 0.7s;
+      animation-fill-mode: forwards;
+
+      span {
+        display: inline-block;
+        transform: rotate(360deg);
+        transition-duration: 0.7s;
+      }
+    }
+  }
+}
+
+.property__description {
+  flex-basis: 100%;
+}
+
+.property__use-case {
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.property__use-case-list {
+  visibility: visible;
+  opacity: 1;
+  min-height: 400px;
+  // height: 100%;
+  transition-property: min-height, opacity;
+  transition-duration: .5s;
+}
+
+.property__use-case-header {
+  input {
+    //background-color: #e4cf00;
+    border: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 2px;
+    border: 1px solid #e4cf00;
+    font-family: monospace;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid #3c0091;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.property__use-case-name {
+  position: relative;
+
+  button {
+    font-family: monospace;
+    font-size: 16px;
+    border: none;
+    background-color: #ffeb1a;
+    border-radius: 2px;
+    padding: 3px 7px 5px;
+    margin-right: 20px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &[data-tooltip] {
+    &:before {
+      background-color: #333;
+      border-radius: 2px;
+      bottom: 100%;
+      color: #fff;
+      content: attr(data-tooltip);
+      font-family: "Source Sans Pro", "Arial",sans-serif;
+      font-size: 0.6rem;
+      left: 50%;
+      line-height: 1.2;
+      opacity: 0;
+      padding: 0.5em 0.6em;
+      pointer-events: none;
+      position: absolute;
+      text-align: center;
+      transform: translateX(-50%) translateY(0);
+      transition-duration: 300ms;
+      transition-property: opacity, transform;
+      visibility: hidden;
+      white-space: nowrap;
+    }
+
+    &:hover:before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+      visibility: visible;
+    }
+  }
+}
+
+.property__use-case-value[name='animation-value'] {
+  width: 40px;
+  cursor: text;
+  background-color: #fff;
+}
+
+.property__use-case-description {
+  padding-top: 10px;
+}
+
+.property__use-case-options {
+
+  &--short {
+    width: 40px;
+  }
+}
+
+.property__use-case-info {
+  flex-basis: 50%;
+  margin-right: 10px;
+}
+
+@media ($mobile-width) {
+  .property__header {
+    justify-content: flex-start;
+  }
+  .property__name {
+    margin-right: 50px;
+  }
+}
+
+@media ($tablet-width) {
+  .property {
+    padding: 0 40px 20px 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--short {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      visibility: visible;
+      height: 100%;
+
+      .property__use-case-list {
+        visibility: visible;
+        height: 100%;
+        opacity: 1;
+        transition: height 2s ease-in-out;
+      }
+
+      .button {
+        display: block;
+      }
+
+      .property__description {
+        display: block;
+      }
+
+      .property__name {
+        margin: .83em 50px .83em 0;
+      }
+    }
+  }
+
+  .property__use-case {
+    display: flex;
+  }
+}
